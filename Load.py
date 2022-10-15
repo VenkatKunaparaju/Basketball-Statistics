@@ -33,12 +33,6 @@ if 'Basketball' not in check:
     """
     )
 
-    cursor.execute(
-
-
-        
-    )
-
 
 
 else:
