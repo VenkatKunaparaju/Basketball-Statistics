@@ -19,7 +19,7 @@ check = ""
 for x in cursor:
     check += x[0];
 
-#Create 'Basketball' if it doesn't exist
+#Create 'Basketball' if it doesn't exist and load tables and data into it
 if 'Basketball' not in check:
     cursor.execute("CREATE DATABASE Basketball")
     cursor.execute("USE Basketball")
@@ -49,7 +49,9 @@ if 'Basketball' not in check:
 
 
 
-else:
+
+
+else: # Use 'Basketball' if it already exists
     cursor.execute("USE Basketball")
 
 cursor.execute("SHOW TABLES")
