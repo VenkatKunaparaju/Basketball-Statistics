@@ -44,9 +44,13 @@ if 'Basketball' not in check:
             for row in reader:
                 if row[0] != 'slug':
                     for x in range(len(row)):
-                        row[x] = row[x].replace(" ", "_")       
+                        row[x] = row[x].replace(" ", "_") #Replace Spaces for underscores for the values       
                     cursor.execute(f"INSERT INTO Player(id, Year, Name, Team, Age, Position) VALUES(\"{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]}\")")
-                    
+
+            #Test if player data load
+            cursor.execute("SELECT Name FROM Player WHERE Team=\"MEMPHIS_GRIZZLIES\" AND Year=2021")
+            for x in cursor:
+                print(x)       
                
 
     cursor.execute( #Create Game Stats table
