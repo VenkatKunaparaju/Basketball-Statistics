@@ -1,3 +1,4 @@
+import csv
 createPlayer = """
     CREATE TABLE Player (
         id VARCHAR(255), Year INT, Name VARCHAR(255), Team VARCHAR(255), 
@@ -24,5 +25,6 @@ createGame =   """
     )
     
     """
+
 
 

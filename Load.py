@@ -36,9 +36,16 @@ if 'Basketball' not in check:
     command.createSeason
     )
 
+    for i in range(12,22): #Load season data
+        csvFile = "Data/20" + str(i) + "_player_season_totals.csv"
+        with open(csvFile, 'r') as file:
+            reader = csv.reader(file)
+
     cursor.execute( #Create Game Stats table
     command.createGame
     )
+    
+            
 
 else: # Use 'Basketball' if it already exists
     cursor.execute("USE Basketball")
