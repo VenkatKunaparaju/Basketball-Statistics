@@ -3,7 +3,7 @@ createPlayer = """
     CREATE TABLE Player (
         id VARCHAR(255), Year INT, Name VARCHAR(255), Team VARCHAR(255), 
         Age INT, Position VARCHAR(255), 
-        PRIMARY KEY (id, Year)
+        PRIMARY KEY (id, Year, Team)
     )
     """
 createSeason =  """
