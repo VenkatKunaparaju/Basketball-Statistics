@@ -36,10 +36,20 @@ if 'Basketball' not in check:
     command.createSeason
     )
 
-    for i in range(12,22): #Load season data
-        csvFile = "Data/20" + str(i) + "_player_season_totals.csv"
+    for i in range(12,22): #Load season and player data
+        year = int("20" + str(i))
+        csvFile = "Data/" + str(year) + "_player_season_totals.csv"
         with open(csvFile, 'r') as file:
             reader = csv.reader(file)
+            for row in reader:
+                if row[0] != 'slug':
+                    #print(f"INSERT INTO Player VALUES({row[0]}, {year}, {row[1]}, {row[4]}, {int(row[3])}, {row[2]})")
+                    #cursor.execute("SELECT * FROM Player")
+                    for x in range(len(row)):
+                        row[x] = row[x].replace(" ", "_")
+                    cursor.execute(f"INSERT INTO Player(id, Year, Name, Team, Age, Position) VALUES(\"{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]})\"")
+                
+                #cursor.execute(f"INSERT INTO Season_stats VALUES()")
 
     cursor.execute( #Create Game Stats table
     command.createGame
