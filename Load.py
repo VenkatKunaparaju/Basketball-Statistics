@@ -52,16 +52,17 @@ if 'Basketball' not in check:
                         row[x] = row[x].replace(" ", "_") #Replace Spaces for underscores for the values   
                     seasonRow = [row[0]]
                     seasonRow.append(year)
+                    seasonRow.append(row[4])
                     for x in range(5, len(row)):
                         seasonRow.append(int(row[x])) 
                     print(len(seasonRow))
 
                     
                     exeString  = """
-                    INSERT INTO Season_stats(id, Year, Games_played, Games_started, Minutes_played, Made_field_goals, 
+                    INSERT INTO Season_stats(id, Year, Team, Games_played, Games_started, Minutes_played, Made_field_goals, 
                     Attempted_field_goals, Made_3_pts, Attempted_3_pts, Made_ft, Attempted_ft, Offensive_rebounds, 
                     Defensive_rebounds, Assists, Steals, Blocks, Turnovers, Fouls, Points) 
-                    VALUES(\"%s\", %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    VALUES(\"%s\", %s, \"%s\", %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     """ 
                     cursor.execute(exeString, seasonRow)
                     

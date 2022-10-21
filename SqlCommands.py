@@ -8,10 +8,11 @@ createPlayer = """
     """
 createSeason =  """
     CREATE TABLE Season_stats (
-        id VARCHAR(255), Year INT, Games_played INT, Games_started INT, Minutes_played INT, Made_field_goals INT, 
+        id VARCHAR(255), Year INT, Team VARCHAR(255), 
+        Games_played INT, Games_started INT, Minutes_played INT, Made_field_goals INT, 
         Attempted_field_goals INT, Made_3_pts INT, Attempted_3_pts INT, Made_ft INT, Attempted_ft INT, Offensive_rebounds INT,
         Defensive_rebounds INT, Assists INT, Steals INT, Blocks INT, Turnovers INT, Fouls INT, Points INT,
-        PRIMARY KEY (id, Year)
+        PRIMARY KEY (id, Year, Team)
     ) 
     """
 createGame =   """
