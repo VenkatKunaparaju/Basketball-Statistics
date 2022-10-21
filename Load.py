@@ -52,10 +52,9 @@ if 'Basketball' not in check:
                     #Load player data
                     for x in range(len(row)):
                         row[x] = row[x].replace(" ", "_") #Replace Spaces for underscores for the values  
-                        
+                  
                     cursor.execute(command.playerLoad, [row[0], year, row[1], row[4], int(row[3]), row[2]])
 
-#{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]}\")")
                     #Load season stats data
                     seasonRow = [row[0]]
                     seasonRow.append(year)
@@ -68,12 +67,13 @@ if 'Basketball' not in check:
                      
                    
 
-            #Test if player data load
+            #Debug: Test if player data load
             cursor.execute("SELECT Name FROM Player WHERE Team=\"MEMPHIS_GRIZZLIES\" AND Year=2021")
             for x in cursor:
                 print(x)       
             
-            #Test if season data load
+            #Debug: Test if season data load
+
          
 
     
