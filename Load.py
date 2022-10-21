@@ -28,12 +28,17 @@ if 'Basketball' not in check:
     cursor.execute("CREATE DATABASE Basketball")
     cursor.execute("USE Basketball")
 
+    #Create tables
     cursor.execute( #Create Player table
     command.createPlayer
     )
 
     cursor.execute( #Create Season Stats table
     command.createSeason
+    )
+
+    cursor.execute( #Create Game Stats table
+    command.createGame
     )
 
     for i in range(12,22): #Load season and player data
@@ -44,18 +49,30 @@ if 'Basketball' not in check:
             for row in reader:
                 if row[0] != 'slug':
                     for x in range(len(row)):
-                        row[x] = row[x].replace(" ", "_") #Replace Spaces for underscores for the values       
+                        row[x] = row[x].replace(" ", "_") #Replace Spaces for underscores for the values   
+                    seasonRow = [row[0]]
+                    for x in range(5, len(row)):
+                        seasonRow.append(int(row[x])) 
+                    cursor.execute(f"""
+                    INSERT INTO Season_stats(id, Year, Games_played, Games_started, Minutes_played, Made_field_goals, 
+                    Attempted_field_goals, Made_3_pts, Attempted_3_pts, Made_ft, Attempted_ft, Offensive_rebounds, 
+                    Defensive_rebounds, Assists, Steals, Blocks, Turnovers, Fouls, Points) 
+                    VALUES(\"{row[0]}\", {year}, %d, %d, %d, %d)
+                    """) 
+                     
+                    id VARCHAR(255), Year INT, Games_played INT, Games_started INT, Minutes_played INT, Made_field_goals INT, 
+        Attempted_field_goals INT, Made_3_pts INT, Attempted_3_pts INT, Made_ft INT, Attempted_ft INT, Offensive_rebounds INT,
+        Defensive_rebounds INT, Assists INT, Steals INT, Blocks INT, Turnovers INT, Fouls INT, Points INT,
                     cursor.execute(f"INSERT INTO Player(id, Year, Name, Team, Age, Position) VALUES(\"{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]}\")")
+
 
             #Test if player data load
             cursor.execute("SELECT Name FROM Player WHERE Team=\"MEMPHIS_GRIZZLIES\" AND Year=2021")
             for x in cursor:
                 print(x)       
-               
+         
 
-    cursor.execute( #Create Game Stats table
-    command.createGame
-    )
+    
     
             
 
