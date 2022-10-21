@@ -12,7 +12,8 @@ mydb = mysql.connector.connect( # establish connection
     password='', #Edit password here to match user password
 )
 
-cursor = mydb.cursor()
+
+cursor = mydb.cursor(buffered=True)
 
 
 #Check if database 'Basketball' exists
@@ -73,7 +74,7 @@ if 'Basketball' not in check:
                 print(x)       
             
             #Debug: Test if season and player data load
-            cursor.execute("SELECT Name FROM Season_stats as Season JOIN Player ON Season.id = Player.id and Season.Year = Player.Year and Season.Team = Player.Team WHERE Points > 1000")
+            cursor.execute("SELECT Points FROM Season_stats WHERE Points > 1000")
          
 
     
