@@ -75,7 +75,7 @@ if 'Basketball' not in check:
             
             print ("\n\n")
             #Debug: Test if season and player data load
-            cursor.execute("SELECT Name FROM Season_stats as s NATURAL JOIN Player as p WHERE Points > 2000 and s.Year = 2022")
+            cursor.execute("SELECT Name FROM Season_stats as s NATURAL JOIN Player as p WHERE Made_3_pts > 200 and s.Year = 2021")
             for x in cursor:
                 print(x)  
          
