@@ -68,12 +68,12 @@ if 'Basketball' not in check:
                    
 
             #Debug: Test if player data load
-            cursor.execute("SELECT Name FROM Player WHERE Team=\"MEMPHIS_GRIZZLIES\" AND Year=2021")
+            cursor.execute("SELECT Name FROM Player WHERE Team= \"MEMPHIS_GRIZZLIES\" AND Year=2021")
             for x in cursor:
                 print(x)       
             
-            #Debug: Test if season data load
-
+            #Debug: Test if season and player data load
+            cursor.execute("SELECT Name FROM Season_stats as Season JOIN Player ON Season.id = Player.id and Season.Year = Player.Year and Season.Team = Player.Team WHERE Points > 1000")
          
 
     
