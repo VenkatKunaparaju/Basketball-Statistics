@@ -53,16 +53,18 @@ if 'Basketball' not in check:
                     seasonRow = [row[0]]
                     for x in range(5, len(row)):
                         seasonRow.append(int(row[x])) 
-                    cursor.execute(f"""
-                    INSERT INTO Season_stats(id, Year, Games_played, Games_started, Minutes_played, Made_field_goals, 
-                    Attempted_field_goals, Made_3_pts, Attempted_3_pts, Made_ft, Attempted_ft, Offensive_rebounds, 
-                    Defensive_rebounds, Assists, Steals, Blocks, Turnovers, Fouls, Points) 
-                    VALUES(\"{row[0]}\", {year}, %d, %d, %d, %d)
-                    """) 
+                    print(seasonRow)
+
+                    
+                    #cursor.execute("""
+                    #INSERT INTO Season_stats(id, Year, Games_played, Games_started, Minutes_played, Made_field_goals, 
+                    #Attempted_field_goals, Made_3_pts, Attempted_3_pts, Made_ft, Attempted_ft, Offensive_rebounds, 
+                    #Defensive_rebounds, Assists, Steals, Blocks, Turnovers, Fouls, Points) 
+                    #VALUES(\"%s\", %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)
+                    #""" % (row[0], year, seasonRow)) 
+                    
                      
-                    id VARCHAR(255), Year INT, Games_played INT, Games_started INT, Minutes_played INT, Made_field_goals INT, 
-        Attempted_field_goals INT, Made_3_pts INT, Attempted_3_pts INT, Made_ft INT, Attempted_ft INT, Offensive_rebounds INT,
-        Defensive_rebounds INT, Assists INT, Steals INT, Blocks INT, Turnovers INT, Fouls INT, Points INT,
+                   
                     cursor.execute(f"INSERT INTO Player(id, Year, Name, Team, Age, Position) VALUES(\"{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]}\")")
 
 
