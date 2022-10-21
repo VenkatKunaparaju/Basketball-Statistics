@@ -42,7 +42,7 @@ if 'Basketball' not in check:
     command.createGame
     )
 
-    for i in range(12,22): #Load season and player data
+    for i in range(12,23): #Load season and player data
         year = int("20" + str(i))
         csvFile = "Data/" + str(year) + "_player_season_totals.csv"
         with open(csvFile, 'r') as file:
@@ -73,8 +73,9 @@ if 'Basketball' not in check:
             for x in cursor:
                 print(x)       
             
+            print ("\n\n")
             #Debug: Test if season and player data load
-            cursor.execute("SELECT Points FROM Season_stats WHERE Points > 1000")
+            cursor.execute("SELECT Name FROM Season_stats as s NATURAL JOIN Player as p WHERE Points > 2000 and s.Year = 2020")
             for x in cursor:
                 print(x)  
          
