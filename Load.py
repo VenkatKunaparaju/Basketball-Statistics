@@ -75,6 +75,8 @@ if 'Basketball' not in check:
             
             #Debug: Test if season and player data load
             cursor.execute("SELECT Points FROM Season_stats WHERE Points > 1000")
+            for x in cursor:
+                print(x)  
          
 
     
