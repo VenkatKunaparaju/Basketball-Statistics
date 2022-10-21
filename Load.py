@@ -54,15 +54,16 @@ if 'Basketball' not in check:
                     seasonRow.append(year)
                     for x in range(5, len(row)):
                         seasonRow.append(int(row[x])) 
-                    print(seasonRow)
+                    print(len(seasonRow))
 
                     
-                    cursor.execute("""
+                    exeString  = """
                     INSERT INTO Season_stats(id, Year, Games_played, Games_started, Minutes_played, Made_field_goals, 
                     Attempted_field_goals, Made_3_pts, Attempted_3_pts, Made_ft, Attempted_ft, Offensive_rebounds, 
                     Defensive_rebounds, Assists, Steals, Blocks, Turnovers, Fouls, Points) 
-                    VALUES(\"%s\", %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)
-                    """ % seasonRow) 
+                    VALUES(\"%s\", %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    """ 
+                    cursor.execute(exeString, seasonRow)
                     
                      
                    
