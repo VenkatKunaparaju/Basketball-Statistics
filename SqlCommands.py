@@ -30,8 +30,10 @@ seasonLoad  = """
                     INSERT INTO Season_stats(id, Year, Team, Games_played, Games_started, Minutes_played, Made_field_goals, 
                     Attempted_field_goals, Made_3_pts, Attempted_3_pts, Made_ft, Attempted_ft, Offensive_rebounds, 
                     Defensive_rebounds, Assists, Steals, Blocks, Turnovers, Fouls, Points) 
-                    VALUES(\"%s\", %s, \"%s\", %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                    """ 
-
+                    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """ 
+playerLoad = """
+                    INSERT INTO Player(id, Year, Name, Team, Age, Position) VALUES(%s, %s, %s, %s, %s, %s)
+            """
 
 

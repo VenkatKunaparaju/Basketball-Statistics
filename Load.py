@@ -53,16 +53,16 @@ if 'Basketball' not in check:
                     for x in range(len(row)):
                         row[x] = row[x].replace(" ", "_") #Replace Spaces for underscores for the values  
                         
-                    cursor.execute(f"INSERT INTO Player(id, Year, Name, Team, Age, Position) VALUES(\"{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]}\")")
+                    cursor.execute(command.playerLoad, [row[0], year, row[1], row[4], int(row[3]), row[2]])
 
-
+#{row[0]}\", {year}, \"{row[1]}\", \"{row[4]}\", {int(row[3])}, \"{row[2]}\")")
                     #Load season stats data
                     seasonRow = [row[0]]
                     seasonRow.append(year)
                     seasonRow.append(row[4])
                     for x in range(5, len(row)):
                         seasonRow.append(int(row[x])) 
-                        
+
                     cursor.execute(command.seasonLoad, seasonRow)
                     
                      
